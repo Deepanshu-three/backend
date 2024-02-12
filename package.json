@@ -1,0 +1,23 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "learning backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "javascript, backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Deepanshu-three/backend.git"
+  },
+  "keywords": [
+    "javascript",
+    "backend"
+  ],
+  "author": "deepanshu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Deepanshu-three/backend/issues"
+  },
+  "homepage": "https://github.com/Deepanshu-three/backend#readme"
+}
