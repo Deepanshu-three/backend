@@ -27,3 +27,6 @@ Learnt about the error class of node js and how to create our own response class
 
 learned about some of the middlewares
 some standered practices
+
+commit 5-
+Created user model and video model for the app and also learnt the use of bcrypt and jwt library and how to use them.
