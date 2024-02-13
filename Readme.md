@@ -20,3 +20,10 @@ things to remember:-
 2. always use async function to connect database.
 3. never provide the connection url in the code, make a seprate .env file store the url there and use that to fetch url
 4. try to keep your index.js or any other main file as short as possible. 
+
+
+commit 5-
+Learnt about the error class of node js and how to create our own response class 
+
+learned about some of the middlewares
+some standered practices
