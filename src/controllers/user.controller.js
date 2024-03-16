@@ -10,8 +10,8 @@ import { response } from "express";
 const generateAccessAndRefreshToken = async(userId) => {
     try {
         const user = await User.findById(userId)
-        const accessToken = user.generateAccessToken
-        const refreshToken = user.generateRefreshToken
+        const accessToken = user.generateAccessToken()
+        const refreshToken = user.generateRefreshToken()
     
         user.refreshToken = refreshToken
         await user.save({ validateBeforeSave: false })
@@ -135,11 +135,11 @@ const loginUser = asyncHandler(async (req, res) => {
         secure: true
     }
 
-    return res.
-    status(200).
-    cookie("accessToken", accessToken, options).
-    cookie("refreshToken", refreshToken, options).
-    json(
+    return res
+    .status(200)
+    .cookie("accessToken", accessToken, options)
+    .cookie("refreshToken", refreshToken, options)
+    .json(
         new ApiResponse(
             200, {
                 user: loggedInUser, accessToken, refreshToken
@@ -233,7 +233,7 @@ const changeCurrentPassword = asyncHandler(async (req, res) => {
     
     await user.save({validateBeforeSave: false})
 
-    return response
+    return res
     .status(200)
     .json(new ApiResponse(200, {}, "Password change successfully"))
 })
@@ -252,7 +252,7 @@ const updateAccountDetails = asyncHandler(async (req,res) => {
         throw new ApiError(400, "All feilds are required")
     }
 
-    const user = User.findByIdAndUpdate(
+    const user = await User.findByIdAndUpdate(
         req.user?._id,
         {
             $set: {
