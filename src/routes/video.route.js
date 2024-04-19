@@ -30,4 +30,5 @@ router.get("/:videoId", getVideoById)
 router.route("/comment/:videoId").post(addComment)
 
 
+
 export default router

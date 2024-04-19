@@ -41,7 +41,7 @@ const videoSchema = new Schema(
       user : {
         type: Schema.Types.ObjectId,
         ref: "User"
-      },
+      }, 
       text: {
         type: String,
       }

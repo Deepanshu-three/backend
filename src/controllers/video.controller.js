@@ -90,45 +90,46 @@ export const getVideoById = asyncHandler(async (req, res) => {
 })
 
 export const getComment = asyncHandler(async(req, res) => {
-    const videoId = "66214ee5a603851419e23f07"
+    const videoId = "6621f7d9707abcde5768bb86"
 
-    const video = Video.findById(videoId)
+    const video = await Video.findById(videoId)
 
-    res.status(201).json({
-        comments: video.comment
-    })
+    res.status(201).json(
+        new ApiResponse(200, video.comment, "comments fetched successfully")
+    )
 
 
     
 })
 
 export const addComment = asyncHandler(async(req, res) => {
-    
     try {
-        
-        const {comment} = req.body
-
+        const { comment } = req.body;
         const user = req.user;
 
         const commentsArr = {
             user: user,
-            comment:comment,
-        }
+            text: comment,
+        };
 
-        const videoId = "66214ee5a603851419e23f07"
-        const video = await Video.findById(videoId)
+        console.log(comment);
+        console.log(commentsArr);
+        const videoId = "6621f7d9707abcde5768bb86";
+        const video = await Video.findById(videoId);
 
-        video.comment.push(commentsArr)
+        console.log(video)
+        // Add the comment to the video
+        video.comment.push(commentsArr);
 
-
-
+        // Save the changes to the database
+        await video.save();
 
         res.status(201).json(
             new ApiResponse(200, video, "Comment added successfully")
-        )
-
+        );
     } catch (error) {
-        throw new ApiError(500, `Error: ${error}`)
+        // Handle errors
+        throw new ApiError(500, `Error: ${error}`);
     }
+});
 
-})
